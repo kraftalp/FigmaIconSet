@@ -1,4 +1,4 @@
-# 🧰 Open Icon Library – SVG Asset Repo
+# 🧰 FigmaIconSet V.0.1
 
 This repository contains the **open source SVG icon assets** used in the [Open Icon Library Figma Plugin](https://www.figma.com/community/plugin/OPEN-PLUGIN-LINK).
 
