@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Figma Icon Library</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f0f0;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #ad18ad;
+      color: rgb(255, 251, 0);
+      padding: 10px 15px;
+    }
+
+    .header img {
+      height: 24px;
+      margin-right: 10px;
+    }
+
+    .header h1, .header span {
+      margin: 0;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .search-container {
+      padding: 10px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .search-container input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .search-container button {
+      margin-left: 8px;
+      padding: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .search-container button img {
+      width: 20px;
+      height: 20px;
+    }
+
+    #icon-container {
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 10px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+
+    .icon-btn {
+      background-color: #fff9c4;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      cursor: pointer;
+      transition: transform 0.1s ease-in-out;
+    }
+
+    .icon-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .icon-btn img {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Kraftalp</h1>
+    <span>FigmaIconPack V.0.1</span>
+  </div>
+
+  <div class="search-container">
+    <input id="search" type="text" placeholder="Icon Search..." />
+    <button>
+      <img src="https://img.icons8.com/ios-filled/50/search--v1.png" alt="Search">
+    </button>
+  </div>
+
+  <div id="icon-container"></div>
+
+  <script>
+    const icons = 
+    [
+     { name: "activity ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/activity.svg" },
+{ name: "airplay ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/airplay.svg" },
+{ name: "alert circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/alert-circle.svg" },
+{ name: "alert octagon ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/alert-octagon.svg" },
+{ name: "alert triangle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/alert-triangle.svg" },
+{ name: "align center ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/align-center.svg" },
+{ name: "align justify ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/align-justify.svg" },
+{ name: "align left ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/align-left.svg" },
+{ name: "align right ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/align-right.svg" },
+{ name: "anchor ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/anchor.svg" },
+{ name: "aperture ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/aperture.svg" },
+{ name: "archive ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/archive.svg" },
+{ name: "arrow down circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/arrow-down-circle.svg" },
+{ name: "arrow down left ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/arrow-down-left.svg" },
+{ name: "arrow down right ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/arrow-down-right.svg" },
+{ name: "arrow down ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/arrow-down.svg" },
+{ name: "arrow left circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/arrow-left-circle.svg" },
+{ name: "arrow left ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/arrow-left.svg" },
+{ name: "arrow right circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/arrow-right-circle.svg" },
+{ name: "arrow right ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/arrow-right.svg" },
+{ name: "arrow up circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/arrow-up-circle.svg" },
+{ name: "arrow up left ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/arrow-up-left.svg" },
+{ name: "arrow up right ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/arrow-up-right.svg" },
+{ name: "arrow up ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/arrow-up.svg" },
+{ name: "at sign ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/at-sign.svg" },
+{ name: "award ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/award.svg" },
+{ name: "bar chart 2 ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/bar-chart-2.svg" },
+{ name: "bar chart ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/bar-chart.svg" },
+{ name: "battery charging ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/battery-charging.svg" },
+{ name: "battery ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/battery.svg" },
+{ name: "bell off ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/bell-off.svg" },
+{ name: "bell ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/bell.svg" },
+{ name: "bluetooth ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/bluetooth.svg" },
+{ name: "bold ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/bold.svg" },
+{ name: "book open ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/book-open.svg" },
+{ name: "book ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/book.svg" },
+{ name: "bookmark ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/bookmark.svg" },
+{ name: "box ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/box.svg" },
+{ name: "briefcase ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/briefcase.svg" },
+{ name: "calendar ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/calendar.svg" },
+{ name: "camera off ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/camera-off.svg" },
+{ name: "camera ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/camera.svg" },
+{ name: "cast ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/cast.svg" },
+{ name: "check circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/check-circle.svg" },
+{ name: "check square ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/check-square.svg" },
+{ name: "check ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/check.svg" },
+{ name: "chevron down ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/chevron-down.svg" },
+{ name: "chevron left ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/chevron-left.svg" },
+{ name: "chevron right ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/chevron-right.svg" },
+{ name: "chevron up ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/chevron-up.svg" },
+{ name: "chevrons down ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/chevrons-down.svg" },
+{ name: "chevrons left ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/chevrons-left.svg" },
+{ name: "chevrons right ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/chevrons-right.svg" },
+{ name: "chevrons up ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/chevrons-up.svg" },
+{ name: "chrome ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/chrome.svg" },
+{ name: "circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/circle.svg" },
+{ name: "clipboard ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/clipboard.svg" },
+{ name: "clock ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/clock.svg" },
+{ name: "cloud drizzle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/cloud-drizzle.svg" },
+{ name: "cloud lightning ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/cloud-lightning.svg" },
+{ name: "cloud off ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/cloud-off.svg" },
+{ name: "cloud rain ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/cloud-rain.svg" },
+{ name: "cloud snow ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/cloud-snow.svg" },
+{ name: "cloud ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/cloud.svg" },
+{ name: "code ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/code.svg" },
+{ name: "codepen ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/codepen.svg" },
+{ name: "codesandbox ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/codesandbox.svg" },
+{ name: "coffee ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/coffee.svg" },
+{ name: "columns ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/columns.svg" },
+{ name: "command ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/command.svg" },
+{ name: "compass ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/compass.svg" },
+{ name: "copy ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/copy.svg" },
+{ name: "corner down left ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/corner-down-left.svg" },
+{ name: "corner down right ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/corner-down-right.svg" },
+{ name: "corner left down ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/corner-left-down.svg" },
+{ name: "corner left up ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/corner-left-up.svg" },
+{ name: "corner right down ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/corner-right-down.svg" },
+{ name: "corner right up ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/corner-right-up.svg" },
+{ name: "corner up left ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/corner-up-left.svg" },
+{ name: "corner up right ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/corner-up-right.svg" },
+{ name: "cpu ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/cpu.svg" },
+{ name: "credit card ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/credit-card.svg" },
+{ name: "crop ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/crop.svg" },
+{ name: "crosshair ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/crosshair.svg" },
+{ name: "database ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/database.svg" },
+{ name: "delete ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/delete.svg" },
+{ name: "disc ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/disc.svg" },
+{ name: "divide circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/divide-circle.svg" },
+{ name: "divide square ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/divide-square.svg" },
+{ name: "divide ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/divide.svg" },
+{ name: "dollar sign ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/dollar-sign.svg" },
+{ name: "download cloud ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/download-cloud.svg" },
+{ name: "download ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/download.svg" },
+{ name: "dribbble ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/dribbble.svg" },
+{ name: "droplet ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/droplet.svg" },
+{ name: "edit 2 ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/edit-2.svg" },
+{ name: "edit 3 ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/edit-3.svg" },
+{ name: "edit ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/edit.svg" },
+{ name: "external link ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/external-link.svg" },
+{ name: "eye off ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/eye-off.svg" },
+{ name: "eye ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/eye.svg" },
+{ name: "facebook ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/facebook.svg" },
+{ name: "fast forward ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/fast-forward.svg" },
+{ name: "feather ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/feather.svg" },
+{ name: "figma ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/figma.svg" },
+{ name: "file minus ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/file-minus.svg" },
+{ name: "file plus ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/file-plus.svg" },
+{ name: "file text ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/file-text.svg" },
+{ name: "file ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/file.svg" },
+{ name: "film ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/film.svg" },
+{ name: "filter ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/filter.svg" },
+{ name: "flag ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/flag.svg" },
+{ name: "folder minus ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/folder-minus.svg" },
+{ name: "folder plus ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/folder-plus.svg" },
+{ name: "folder ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/folder.svg" },
+{ name: "framer ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/framer.svg" },
+{ name: "frown ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/frown.svg" },
+{ name: "gift ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/gift.svg" },
+{ name: "git branch ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/git-branch.svg" },
+{ name: "git commit ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/git-commit.svg" },
+{ name: "git merge ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/git-merge.svg" },
+{ name: "git pull request ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/git-pull-request.svg" },
+{ name: "github ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/github.svg" },
+{ name: "gitlab ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/gitlab.svg" },
+{ name: "globe ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/globe.svg" },
+{ name: "grid ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/grid.svg" },
+{ name: "hard drive ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/hard-drive.svg" },
+{ name: "hash ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/hash.svg" },
+{ name: "headphones ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/headphones.svg" },
+{ name: "heart ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/heart.svg" },
+{ name: "help circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/help-circle.svg" },
+{ name: "hexagon ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/hexagon.svg" },
+{ name: "home ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/home.svg" },
+{ name: "image ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/image.svg" },
+{ name: "inbox ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/inbox.svg" },
+{ name: "info ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/info.svg" },
+{ name: "instagram ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/instagram.svg" },
+{ name: "italic ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/italic.svg" },
+{ name: "key ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/key.svg" },
+{ name: "layers ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/layers.svg" },
+{ name: "layout ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/layout.svg" },
+{ name: "life buoy ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/life-buoy.svg" },
+{ name: "link 2 ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/link-2.svg" },
+{ name: "link ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/link.svg" },
+{ name: "linkedin ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/linkedin.svg" },
+{ name: "list ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/list.svg" },
+{ name: "loader ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/loader.svg" },
+{ name: "lock ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/lock.svg" },
+{ name: "log in ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/log-in.svg" },
+{ name: "log out ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/log-out.svg" },
+{ name: "mail ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/mail.svg" },
+{ name: "map pin ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/map-pin.svg" },
+{ name: "map ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/map.svg" },
+{ name: "maximize 2 ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/maximize-2.svg" },
+{ name: "maximize ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/maximize.svg" },
+{ name: "meh ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/meh.svg" },
+{ name: "menu ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/menu.svg" },
+{ name: "message circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/message-circle.svg" },
+{ name: "message square ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/message-square.svg" },
+{ name: "mic off ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/mic-off.svg" },
+{ name: "mic ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/mic.svg" },
+{ name: "minimize 2 ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/minimize-2.svg" },
+{ name: "minimize ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/minimize.svg" },
+{ name: "minus circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/minus-circle.svg" },
+{ name: "minus square ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/minus-square.svg" },
+{ name: "minus ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/minus.svg" },
+{ name: "monitor ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/monitor.svg" },
+{ name: "moon ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/moon.svg" },
+{ name: "more horizontal ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/more-horizontal.svg" },
+{ name: "more vertical ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/more-vertical.svg" },
+{ name: "mouse pointer ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/mouse-pointer.svg" },
+{ name: "move ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/move.svg" },
+{ name: "music ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/music.svg" },
+{ name: "navigation 2 ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/navigation-2.svg" },
+{ name: "navigation ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/navigation.svg" },
+{ name: "octagon ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/octagon.svg" },
+{ name: "package ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/package.svg" },
+{ name: "paperclip ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/paperclip.svg" },
+{ name: "pause circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/pause-circle.svg" },
+{ name: "pause ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/pause.svg" },
+{ name: "pen tool ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/pen-tool.svg" },
+{ name: "percent ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/percent.svg" },
+{ name: "phone call ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/phone-call.svg" },
+{ name: "phone forwarded ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/phone-forwarded.svg" },
+{ name: "phone incoming ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/phone-incoming.svg" },
+{ name: "phone missed ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/phone-missed.svg" },
+{ name: "phone off ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/phone-off.svg" },
+{ name: "phone outgoing ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/phone-outgoing.svg" },
+{ name: "phone ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/phone.svg" },
+{ name: "pie chart ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/pie-chart.svg" },
+{ name: "play circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/play-circle.svg" },
+{ name: "play ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/play.svg" },
+{ name: "plus circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/plus-circle.svg" },
+{ name: "plus square ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/plus-square.svg" },
+{ name: "plus ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/plus.svg" },
+{ name: "pocket ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/pocket.svg" },
+{ name: "power ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/power.svg" },
+{ name: "printer ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/printer.svg" },
+{ name: "radio ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/radio.svg" },
+{ name: "refresh ccw ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/refresh-ccw.svg" },
+{ name: "refresh cw ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/refresh-cw.svg" },
+{ name: "repeat ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/repeat.svg" },
+{ name: "rewind ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/rewind.svg" },
+{ name: "rotate ccw ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/rotate-ccw.svg" },
+{ name: "rotate cw ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/rotate-cw.svg" },
+{ name: "rss ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/rss.svg" },
+{ name: "save ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/save.svg" },
+{ name: "scissors ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/scissors.svg" },
+{ name: "search ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/search.svg" },
+{ name: "send ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/send.svg" },
+{ name: "server ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/server.svg" },
+{ name: "settings ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/settings.svg" },
+{ name: "share 2 ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/share-2.svg" },
+{ name: "share ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/share.svg" },
+{ name: "shield off ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/shield-off.svg" },
+{ name: "shield ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/shield.svg" },
+{ name: "shopping bag ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/shopping-bag.svg" },
+{ name: "shopping cart ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/shopping-cart.svg" },
+{ name: "shuffle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/shuffle.svg" },
+{ name: "sidebar ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/sidebar.svg" },
+{ name: "skip back ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/skip-back.svg" },
+{ name: "skip forward ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/skip-forward.svg" },
+{ name: "slack ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/slack.svg" },
+{ name: "slash ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/slash.svg" },
+{ name: "sliders ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/sliders.svg" },
+{ name: "smartphone ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/smartphone.svg" },
+{ name: "smile ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/smile.svg" },
+{ name: "speaker ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/speaker.svg" },
+{ name: "square ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/square.svg" },
+{ name: "star ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/star.svg" },
+{ name: "stop circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/stop-circle.svg" },
+{ name: "sun ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/sun.svg" },
+{ name: "sunrise ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/sunrise.svg" },
+{ name: "sunset ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/sunset.svg" },
+{ name: "table ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/table.svg" },
+{ name: "tablet ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/tablet.svg" },
+{ name: "tag ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/tag.svg" },
+{ name: "target ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/target.svg" },
+{ name: "terminal ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/terminal.svg" },
+{ name: "thermometer ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/thermometer.svg" },
+{ name: "thumbs down ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/thumbs-down.svg" },
+{ name: "thumbs up ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/thumbs-up.svg" },
+{ name: "toggle left ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/toggle-left.svg" },
+{ name: "toggle right ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/toggle-right.svg" },
+{ name: "tool ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/tool.svg" },
+{ name: "trash 2 ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/trash-2.svg" },
+{ name: "trash ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/trash.svg" },
+{ name: "trello ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/trello.svg" },
+{ name: "trending down ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/trending-down.svg" },
+{ name: "trending up ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/trending-up.svg" },
+{ name: "triangle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/triangle.svg" },
+{ name: "truck ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/truck.svg" },
+{ name: "tv ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/tv.svg" },
+{ name: "twitch ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/twitch.svg" },
+{ name: "twitter ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/twitter.svg" },
+{ name: "type ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/type.svg" },
+{ name: "umbrella ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/umbrella.svg" },
+{ name: "underline ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/underline.svg" },
+{ name: "unlock ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/unlock.svg" },
+{ name: "upload cloud ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/upload-cloud.svg" },
+{ name: "upload ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/upload.svg" },
+{ name: "user check ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/user-check.svg" },
+{ name: "user minus ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/user-minus.svg" },
+{ name: "user plus ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/user-plus.svg" },
+{ name: "user x ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/user-x.svg" },
+{ name: "user ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/user.svg" },
+{ name: "users ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/users.svg" },
+{ name: "video off ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/video-off.svg" },
+{ name: "video ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/video.svg" },
+{ name: "voicemail ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/voicemail.svg" },
+{ name: "volume 1 ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/volume-1.svg" },
+{ name: "volume 2 ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/volume-2.svg" },
+{ name: "volume x ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/volume-x.svg" },
+{ name: "volume ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/volume.svg" },
+{ name: "watch ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/watch.svg" },
+{ name: "wifi off ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/wifi-off.svg" },
+{ name: "wifi ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/wifi.svg" },
+{ name: "wind ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/wind.svg" },
+{ name: "x circle ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/x-circle.svg" },
+{ name: "x octagon ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/x-octagon.svg" },
+{ name: "x square ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/x-square.svg" },
+{ name: "x ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/x.svg" },
+{ name: "youtube ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/youtube.svg" },
+{ name: "zap off ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/zap-off.svg" },
+{ name: "zap ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/zap.svg" },
+{ name: "zoom in ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/zoom-in.svg" },
+{ name: "zoom out ", path: "https://raw.githubusercontent.com/kraftalp/FigmaIconSet/main/icons/feather/zoom-out.svg" }
+
+    
+    ];
+
+    const container = document.getElementById("icon-container");
+    const search = document.getElementById("search");
+
+    function displayIcons(filter = "") {
+      container.innerHTML = "";
+      icons
+        .filter(i => i.name.toLowerCase().includes(filter.toLowerCase()))
+        .forEach(icon => {
+          const btn = document.createElement("div");
+          btn.className = "icon-btn";
+          btn.innerHTML = `<img src="${icon.path}" alt="${icon.name}"><div>${icon.name}</div>`;
+          btn.onclick = async () => {
+            const res = await fetch(icon.path);
+            const svg = await res.text();
+            parent.postMessage({ pluginMessage: { type: 'insert-icon', svg } }, '*');
+          };
+          container.appendChild(btn);
+        });
+    }
+
+    search.addEventListener("input", (e) => displayIcons(e.target.value));
+    displayIcons();
+  </script>
+
+</body>
+</html>

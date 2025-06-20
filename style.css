@@ -1,0 +1,119 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 10px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+button {
+  margin: 5px;
+  padding: 5px;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  font-size: 8px;
+}
+
+/* Yeni Header Stilleri */
+.header {
+  background-image: url('https://cdn.prod.website-files.com/6768f29a6d5da42209173f20/67b81ae54e3fe89ce37a8af9_Almost%20Blue-h.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 0px;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+  border-radius: 0px;
+}
+
+.header h1 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 28px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.header span {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* ikon Stilleri */
+.icon-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  cursor: pointer;
+  padding: 10px;
+  width: 90px;
+  height: 80px;
+  margin: 5px;
+  box-sizing: border-box;
+}
+
+.icon-btn img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+  object-fit: contain;
+}
+
+.icon-name {
+  width: 100%;
+  text-align: center;
+  font-size: 10px;
+  line-height: 1.2;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive Ayarlar */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px;
+  }
+  .header h1 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 10px;
+  }
+  .header h1 {
+    font-size: 20px;
+  }
+  .header span {
+    font-size: 12px;
+  }
+}
