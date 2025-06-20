@@ -1,7 +1,7 @@
 {
-  "name": "Open Icon Library",
-  "id": "open-icon-library",
-  "api": "1.0.0",
+  "name": "Kraftalp - Figma Icon Pack",
+  "id": "Kraftalp-icon-library",
+  "api": "0.1.0",
   "main": "code.js",
   "ui": "ui.html",
   "editorType": ["figma"]
